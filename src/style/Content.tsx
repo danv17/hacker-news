@@ -7,8 +7,8 @@ export const StyledContent = styled.div`
 `
 
 export const StyledNewsContainer = styled.div`
-    width: 80%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 2.5rem;
+    padding: 0 9.375rem;
 `
