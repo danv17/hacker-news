@@ -4,11 +4,15 @@ import { StyledContent, StyledNewsContainer } from "../style/Content";
 import { NewProps, QueryType } from "../types";
 import { getTimeAgo } from "../utils";
 import { New } from "./New";
+import { Dropdown } from "./Dropdown";
 import { Toggle } from "./Toggle";
+import angularIcon from "../assets/angular.png";
+import reactIcon from "../assets/reactjs.png";
+import vueIcon from "../assets/vuejs.png";
 
 export const Content = (props: React.PropsWithChildren<{}>) => {
-  const [ news, setNews ] = React.useState<NewProps[]>([]);
-  const [ framework, setFramework ] = React.useState<QueryType>("");
+  const [news, setNews] = React.useState<NewProps[]>([]);
+  const [framework, setFramework] = React.useState<QueryType>("");
 
   React.useEffect(() => {
     if (framework) {
@@ -22,6 +26,10 @@ export const Content = (props: React.PropsWithChildren<{}>) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setFramework(e.target.value as QueryType);
+  };
+
+  const handleSelect = (value: string) => {
+    setFramework(value as QueryType);
   }
 
   const mapNews = (news: any[]): NewProps[] => {
@@ -32,25 +40,32 @@ export const Content = (props: React.PropsWithChildren<{}>) => {
         const milliseconds = now - new Date(n.created_at).getTime();
         const created_at = getTimeAgo(milliseconds);
         const { story_id, author, story_title, story_url } = n;
-        return { story_id, created_at, author, story_title, story_url, favourite: false };
+        return {
+          story_id,
+          created_at,
+          author,
+          story_title,
+          story_url,
+          favourite: false,
+        };
       });
   };
 
   return (
     <StyledContent>
       <Toggle options={["All", "My faves"]} />
-      <select value={framework} onChange={handleChange}>
-        <option value="" disabled>Select your news</option>
-        <option key="angular0" value="angular">
-          Angular
-        </option>
-        <option key="reactjs1" value="reactjs">
-          Reactjs
-        </option>
-        <option key="vuejs2" value="vuejs">
-          Vuejs
-        </option>
-      </select>
+      <div style={{ display: "flex", justifyContent: "center"}}>
+      <Dropdown
+        label="Select your news"
+        value={framework}
+        options={[
+          { label: "Angular", value: "angular", icon: angularIcon },
+          { label: "Reactjs", value: "reactjs", icon: reactIcon },
+          { label: "Vuejs", value: "vuejs", icon: vueIcon }
+        ]}
+        onSelect={handleSelect}
+      />
+      </div>
       <StyledNewsContainer>
         {news.map((hit, i) => (
           <New key={`${framework}${i}`} {...hit} />
