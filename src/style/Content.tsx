@@ -13,5 +13,4 @@ export const StyledNewsContainer = styled.div`
 
 export const StyledGridNewsContent = styled.div`
     display: grid;
-    
 `
