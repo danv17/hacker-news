@@ -3,16 +3,12 @@ import { ReactComponent as TimeSvg } from "../assets/time.svg";
 import { ReactComponent as HeartSvg } from "../assets/heart.svg";
 import { ReactComponent as HeartFullSvg } from "../assets/heart-full.svg";
 
-export const StyledNewContainer = styled.a`
+export const StyledNewContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 4.625rem;
   border-radius: 6px;
   border: solid 1px rgb(151 151 151 / 80%);
-  background-color: #fff;
-  text-decoration: none;
-  padding-left: 2rem;
   opacity: 1;
   transition: opacity 0.15s ease-in-out;
 
@@ -20,6 +16,16 @@ export const StyledNewContainer = styled.a`
       opacity: 0.5;
       transition: opacity 0.15s ease-in-out;
   }
+`
+
+export const StyledLinkContainer = styled.a`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4.625rem;
+  background-color: #fff;
+  text-decoration: none;
+  padding-left: 2rem;
 `;
 
 export const StyledTimeAgoByAuthor = styled.div`
@@ -59,6 +65,10 @@ export const StyledFavorite = styled.div`
   height: 100%;
   padding: 0 1.375rem;
   background-color: rgb(96 96 96 / 6%);
+
+  & svg {
+    cursor: pointer;
+  }
 `;
 
 export const HeartIcon = styled(HeartSvg)`
