@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ToggleButtonProps } from "../types";
+import { StyledToggleButtonProps } from "../types";
 
 export const StyledToggleGroup = styled.div`
     padding: 3.375rem 0; 
@@ -10,7 +10,7 @@ const selectedToggleButton = css`
     color: #1797ff;
 `
 
-export const StyledToggleButton = styled.button<ToggleButtonProps>`
+export const StyledToggleButton = styled.button<StyledToggleButtonProps>`
     border: solid 1px #d6d6d6;
     background-color: #fcfcfc;
     width: 6.125rem;

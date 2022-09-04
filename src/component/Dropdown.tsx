@@ -6,7 +6,7 @@ import {
   StyledDropdownItem,
   StyledChevron,
 } from "../style/Dropdown";
-import { DropdownItemProps, DropdownProps } from "../types";
+import { DropdownItemActionProps, DropdownItemProps, DropdownProps, StyledDropdownItemProps } from "../types";
 
 export const Dropdown = (props: React.PropsWithChildren<DropdownProps>) => {
   const { options, value, label, onSelect } = props;
@@ -24,15 +24,17 @@ export const Dropdown = (props: React.PropsWithChildren<DropdownProps>) => {
   return (
     <StyledDropdownContainer>
       <StyledDropdownHeader onClick={handleClick}>
-        {options.find((option) => option.value === value)?.label || label}
+        {label}
         <StyledChevron open={open} />
       </StyledDropdownHeader>
       <StyledDropdownItemList>
         {open &&
           options.map((option, i) => (
-            <DropdownItem key={`${option.value}${i}`}
+            <DropdownItem
+              key={`${option.value}${i}`}
               {...option}
               onClick={() => handleSelect(option.value)}
+              selected={option.value === value}
             />
           ))}
       </StyledDropdownItemList>
@@ -41,12 +43,12 @@ export const Dropdown = (props: React.PropsWithChildren<DropdownProps>) => {
 };
 
 const DropdownItem = (
-  props: DropdownItemProps & { onClick: (value: string) => void }
+  props: DropdownItemProps &  DropdownItemActionProps & StyledDropdownItemProps
 ) => {
-  const { value, label, icon, onClick } = props;
+  const { value, label, icon, onClick, selected } = props;
 
   return (
-    <StyledDropdownItem onClick={() => onClick(value)}>
+    <StyledDropdownItem onClick={() => onClick(value)} selected={selected}>
       <img src={icon} alt={label} />
       <span>{label}</span>
     </StyledDropdownItem>

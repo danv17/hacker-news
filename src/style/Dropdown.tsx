@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ChevronProps } from "../types";
+import { StyledChevronProps } from "../types";
 
 export const StyledDropdownContainer = styled.div`
   width: 15rem;
@@ -8,7 +8,6 @@ export const StyledDropdownContainer = styled.div`
   margin-bottom: 2.375rem;
 
   & div {
-    width: 100%;
     height: 100%;
   }
 `;
@@ -40,11 +39,17 @@ export const StyledDropdownItemList = styled.ul`
   width: 15rem;
 `;
 
-export const StyledDropdownItem = styled.li`
+const StyledDropdownItemSelected = css`
+  background-color: #eaeaea;
+`;
+
+export const StyledDropdownItem = styled.li<{ selected: boolean }>`
   display: flex;
   justify-content: flex-start;
   align-items: center;
   padding: 0.938rem 0.625rem;
+
+  ${({ selected }) => selected && StyledDropdownItemSelected}
 
   & img {
     margin-right: 0.813rem;
@@ -56,7 +61,7 @@ const StyledChevronOpen = css`
   transform: rotate(-45deg);
 `;
 
-export const StyledChevron = styled.span<ChevronProps>`
+export const StyledChevron = styled.span<StyledChevronProps>`
   border-style: solid;
   border-width: 0.1em 0.1em 0 0;
   content: "";
