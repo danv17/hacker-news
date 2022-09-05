@@ -20,7 +20,7 @@ export const New = (props: NewProps) => {
     const idx = news.findIndex((n) => n.framework === framework && n.objectID === objectID);
     let favNew = news[idx];
     favNew.favourite = !favNew.favourite;
-    let updatedNews = news;
+    let updatedNews = [...news];
     updatedNews[idx] = favNew;
     setNews(updatedNews);
   }
