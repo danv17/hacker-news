@@ -3,7 +3,9 @@ import { StyledToggleButtonProps } from "../types";
 
 export const StyledToggleGroup = styled.div`
     padding: 3.375rem 0;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
 `
 
 const selectedToggleButton = css`
@@ -14,7 +16,7 @@ const selectedToggleButton = css`
 export const StyledToggleButton = styled.button<StyledToggleButtonProps>`
     border: solid 1px #d6d6d6;
     background-color: #fcfcfc;
-    width: 6.125rem;
+    min-width: 6.125rem;
     height: 1.938rem;
 
     &:first-child {

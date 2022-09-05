@@ -2,9 +2,10 @@ import styled from "styled-components";
 import { ReactComponent as TimeSvg } from "../assets/time.svg";
 import { ReactComponent as HeartSvg } from "../assets/heart.svg";
 import { ReactComponent as HeartFullSvg } from "../assets/heart-full.svg";
+import { newWidth, newWidthSmall } from "./CssVariables";
 
 export const StyledNewContainer = styled.div`
-  width: 47.5%;
+  width: ${newWidth}%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,6 +18,10 @@ export const StyledNewContainer = styled.div`
   &:hover {
     opacity: 0.5;
     transition: opacity 0.15s ease-in-out;
+  }
+
+  @media (max-width: 768px) {
+    width: ${newWidthSmall}%;
   }
 `;
 

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledNewsWrapper = styled.div`
   height: 50vh;
-  overflow-y: scroll;
+  overflow-y: auto;
 `;
 
 export const StyledNewsContainer = styled.div`

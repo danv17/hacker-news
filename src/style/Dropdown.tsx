@@ -7,7 +7,7 @@ export const StyledDropdownWrapper = styled.div`
 `;
 
 export const StyledDropdownContainer = styled.div`
-  width: 15rem;
+  min-width: 15rem;
   height: 2rem;
   background-color: #fff;
   margin-bottom: 2.375rem;
