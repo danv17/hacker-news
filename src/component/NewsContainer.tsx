@@ -11,7 +11,7 @@ export const NewsContainer = () => {
     news,
     setNews,
     showFavs,
-    framework,
+    selectedFramework,
     loadMore,
     setLoadMore,
     isLoading,
@@ -26,6 +26,7 @@ export const NewsContainer = () => {
         const milliseconds = now - new Date(n.created_at).getTime();
         const timeAgo = getTimeAgo(milliseconds);
         const { objectID, created_at, author, story_title, story_url } = n;
+        console.log(framework)
         return {
           framework,
           objectID,
@@ -55,31 +56,31 @@ export const NewsContainer = () => {
       });
       setIsLoading(false);
     },
-    [loadMore, setIsLoading, setLoadMore, setNews]
+    [isLoading, loadMore, setIsLoading, setLoadMore, setNews]
   );
 
   React.useEffect(() => {
-    if (framework) {
+    if (selectedFramework) {
       const storedNews = getItem<NewProps[]>("news") || [];
-      const storedPage = getItem<CurrentPageType>(framework) || undefined;
+      const storedPage = getItem<CurrentPageType>(selectedFramework) || undefined;
       if (!storedPage) {
-        loadNews(framework, 0);
+        loadNews(selectedFramework, 0);
         return;
       }
       let page = storedPage.page;
-      if (storedNews.filter((n) => n.framework === framework) && storedPage) {
+      if (storedNews.filter((n) => n.framework === selectedFramework) && storedPage) {
         if (!showFavs && loadMore && page < storedPage.maxPages) {
-          loadNews(framework, page + 1);
+          loadNews(selectedFramework, page + 1);
         }
         if (!news.length) {
           setNews(storedNews);
         }
       } else {
-        loadNews(framework, page);
+        loadNews(selectedFramework, page);
       }
     }
   }, [
-    framework,
+    selectedFramework,
     loadMore,
     loadNews,
     news.length,
@@ -92,7 +93,7 @@ export const NewsContainer = () => {
     <StyledNewsContainer>
       {news
         .filter((hit) =>
-          showFavs ? hit.favourite === true : hit.framework === framework
+          showFavs ? hit.favourite === true : hit.framework === selectedFramework
         )
         .map((hit) => (
           <New key={`${hit.framework}${hit.objectID}${hit.author}`} {...hit} />

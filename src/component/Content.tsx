@@ -14,8 +14,8 @@ export const Content = () => {
   const {
     showFavs,
     setShowFavs,
-    framework,
-    setFramework,
+    selectedFramework,
+    setSelectedFramework,
     lastFramework,
     setLastFramework,
     setLoadMore,
@@ -27,10 +27,10 @@ export const Content = () => {
       setLastFramework(value as StrictQueryType);
     }
 
-    if (framework !== value) {
+    if (selectedFramework !== value) {
       newsContainerRef.current?.scrollTo({ top: 0 });
-      setLastFramework(framework);
-      setFramework(value as StrictQueryType);
+      setLastFramework(selectedFramework);
+      setSelectedFramework(value as StrictQueryType);
     }
   };
 
@@ -72,7 +72,7 @@ export const Content = () => {
       {!showFavs && (
         <Dropdown
           label="Select your news"
-          value={framework}
+          value={selectedFramework}
           options={[
             { label: "Angular", value: "angular", icon: angularIcon },
             { label: "Reactjs", value: "reactjs", icon: reactIcon },

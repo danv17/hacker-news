@@ -7,8 +7,8 @@ type AppContextType = {
   setNews: Dispatch<React.SetStateAction<NewProps[]>>;
   showFavs: boolean;
   setShowFavs: Dispatch<React.SetStateAction<boolean>>;
-  framework: QueryType;
-  setFramework: Dispatch<React.SetStateAction<QueryType>>;
+  selectedFramework: QueryType;
+  setSelectedFramework: Dispatch<React.SetStateAction<QueryType>>;
   lastFramework: QueryType;
   setLastFramework: Dispatch<React.SetStateAction<QueryType>>;
   loadMore: boolean;
@@ -22,8 +22,8 @@ export const AppContext = React.createContext<AppContextType>({
   setNews: () => null,
   showFavs: false,
   setShowFavs: () => null,
-  framework: "",
-  setFramework: () => null,
+  selectedFramework: "",
+  setSelectedFramework: () => null,
   lastFramework: "",
   setLastFramework: () => null,
   loadMore: false,
@@ -36,7 +36,7 @@ export const AppProvider = (props: React.PropsWithChildren<{}>) => {
   const { children } = props;
   const [news, setNews] = useLocalStorage<NewProps[]>("news", []);
   const [showFavs, setShowFavs] = React.useState<boolean>(false);
-  const [framework, setFramework] = React.useState<QueryType>("");
+  const [selectedFramework, setSelectedFramework] = React.useState<QueryType>("");
   const [lastFramework, setLastFramework] = React.useState<QueryType>("");
   const [loadMore, setLoadMore] = React.useState<boolean>(false);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
@@ -46,8 +46,8 @@ export const AppProvider = (props: React.PropsWithChildren<{}>) => {
     setNews,
     showFavs,
     setShowFavs,
-    framework,
-    setFramework,
+    selectedFramework,
+    setSelectedFramework,
     lastFramework,
     setLastFramework,
     loadMore,
