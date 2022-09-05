@@ -28,7 +28,7 @@ export const New = (props: NewProps) => {
   return (
     <StyledNewContainer>
       <StyledLinkContainer href={story_url} target="_black">
-        <div id={`${framework}${objectID}${author}`}>
+        <div>
           <StyledTimeAgoByAuthor>
             <TimeIcon />
             {`${timeAgo} ago by ${author}`}

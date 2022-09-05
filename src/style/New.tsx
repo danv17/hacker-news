@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { ReactComponent as TimeSvg } from "../assets/time.svg";
 import { ReactComponent as HeartSvg } from "../assets/heart.svg";
 import { ReactComponent as HeartFullSvg } from "../assets/heart-full.svg";
-import { newWidth, newWidthSmall } from "./CssVariables";
+import { newWidth, newWidthSmall, linkLeftPadding, linkLeftPaddingSmall } from "./CssVariables";
 
 export const StyledNewContainer = styled.div`
   width: ${newWidth}%;
@@ -33,9 +33,13 @@ export const StyledLinkContainer = styled.a`
   min-height: 4.625rem;
   background-color: #fff;
   text-decoration: none;
-  padding-left: 2rem;
+  padding-left: ${linkLeftPadding}rem;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
+
+  @media (max-width: 768px) {
+    padding-left: ${linkLeftPaddingSmall}rem;
+  }
 `;
 
 export const StyledTimeAgoByAuthor = styled.div`
