@@ -4,6 +4,7 @@ import { ReactComponent as HeartSvg } from "../assets/heart.svg";
 import { ReactComponent as HeartFullSvg } from "../assets/heart-full.svg";
 
 export const StyledNewContainer = styled.div`
+  width: 47.5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,14 +12,16 @@ export const StyledNewContainer = styled.div`
   border: solid 1px rgb(151 151 151 / 80%);
   opacity: 1;
   transition: opacity 0.15s ease-in-out;
+  margin-bottom: 1.875rem;
 
   &:hover {
-      opacity: 0.5;
-      transition: opacity 0.15s ease-in-out;
+    opacity: 0.5;
+    transition: opacity 0.15s ease-in-out;
   }
-`
+`;
 
 export const StyledLinkContainer = styled.a`
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,6 +29,8 @@ export const StyledLinkContainer = styled.a`
   background-color: #fff;
   text-decoration: none;
   padding-left: 2rem;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
 `;
 
 export const StyledTimeAgoByAuthor = styled.div`

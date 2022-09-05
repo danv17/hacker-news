@@ -5,8 +5,14 @@ import {
   StyledDropdownItemList,
   StyledDropdownItem,
   StyledChevron,
+  StyledDropdownWrapper,
 } from "../style/Dropdown";
-import { DropdownItemActionProps, DropdownItemProps, DropdownProps, StyledDropdownItemProps } from "../types";
+import {
+  DropdownItemActionProps,
+  DropdownItemProps,
+  DropdownProps,
+  StyledDropdownItemProps,
+} from "../types";
 
 export const Dropdown = (props: React.PropsWithChildren<DropdownProps>) => {
   const { options, value, label, onSelect } = props;
@@ -22,28 +28,30 @@ export const Dropdown = (props: React.PropsWithChildren<DropdownProps>) => {
   };
 
   return (
-    <StyledDropdownContainer>
-      <StyledDropdownHeader onClick={handleClick}>
-        {label}
-        <StyledChevron open={open} />
-      </StyledDropdownHeader>
-      <StyledDropdownItemList>
-        {open &&
-          options.map((option, i) => (
-            <DropdownItem
-              key={`${option.value}${i}`}
-              {...option}
-              onClick={() => handleSelect(option.value)}
-              selected={option.value === value}
-            />
-          ))}
-      </StyledDropdownItemList>
-    </StyledDropdownContainer>
+    <StyledDropdownWrapper>
+      <StyledDropdownContainer>
+        <StyledDropdownHeader onClick={handleClick}>
+          {label}
+          <StyledChevron open={open} />
+        </StyledDropdownHeader>
+        <StyledDropdownItemList>
+          {open &&
+            options.map((option, i) => (
+              <DropdownItem
+                key={`${option.value}${i}`}
+                {...option}
+                onClick={() => handleSelect(option.value)}
+                selected={option.value === value}
+              />
+            ))}
+        </StyledDropdownItemList>
+      </StyledDropdownContainer>
+    </StyledDropdownWrapper>
   );
 };
 
 const DropdownItem = (
-  props: DropdownItemProps &  DropdownItemActionProps & StyledDropdownItemProps
+  props: DropdownItemProps & DropdownItemActionProps & StyledDropdownItemProps
 ) => {
   const { value, label, icon, onClick, selected } = props;
 

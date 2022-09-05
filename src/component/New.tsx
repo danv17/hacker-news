@@ -12,7 +12,7 @@ import {
 import { NewProps } from "../types";
 
 export const New = (props: React.PropsWithChildren<NewProps>) => {
-  const { created_at, author, story_title, story_url, favourite } = props;
+  const { timeAgo, author, story_title, story_url, favourite } = props;
   const [ fav, setFav ] = React.useState<boolean>(favourite);
   
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -25,7 +25,7 @@ export const New = (props: React.PropsWithChildren<NewProps>) => {
         <div>
           <StyledTimeAgoByAuthor>
             <TimeIcon />
-            {`${created_at} ago by ${author}`}
+            {`${timeAgo} ago by ${author}`}
           </StyledTimeAgoByAuthor>
           <StyledStoryTitle>{story_title}</StyledStoryTitle>
         </div>

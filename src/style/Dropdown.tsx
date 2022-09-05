@@ -1,6 +1,11 @@
 import styled, { css } from "styled-components";
 import { StyledChevronProps } from "../types";
 
+export const StyledDropdownWrapper = styled.div`
+  display: flex;
+  justify-content: flex-start;
+`;
+
 export const StyledDropdownContainer = styled.div`
   width: 15rem;
   height: 2rem;
@@ -37,6 +42,7 @@ export const StyledDropdownItemList = styled.ul`
   margin: 0;
   position: absolute;
   width: 15rem;
+  z-index: 9;
 `;
 
 const StyledDropdownItemSelected = css`
