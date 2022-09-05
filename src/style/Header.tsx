@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { horizontalPaddingSmall } from "./CssVariables";
+import { contentHorizontalPaddingSmall } from "./CssVariables";
 
 export const StyledHeaderContainer = styled.div`
   display: flex;
@@ -11,10 +11,11 @@ export const StyledHeaderContainer = styled.div`
   max-height: 10%;
 
   @media (max-width: 768px) {
-    padding: 0 ${horizontalPaddingSmall}rem;
+    padding: 0 ${contentHorizontalPaddingSmall}rem;
   }
 `;
 
 export const StyledHeader = styled.h1`
+  font-family: 'Baskerville';
   text-transform: uppercase;
 `;
