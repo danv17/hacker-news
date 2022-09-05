@@ -7,10 +7,16 @@ export type NewsContainerProps = {
 };
 
 export type ToggleProps = {
-  options: string[];
+  options: ToggleButtonProps[];
 };
 
+export type ToggleButtonProps = {
+  label: string;
+  onClick: () => void;
+}
+
 export type NewProps = {
+  framework: StrictQueryType;
   objectID: string;
   created_at: string;
   timeAgo: string;
@@ -46,6 +52,11 @@ export type FrameworkNewsType = {
   maxPage: number;
   news: NewProps[];
 };
+
+export type CurrentPageType = {
+  page: number;
+  maxPages: number;
+}
 
 export type FrameworkPageType = {
   framework: StrictQueryType;
