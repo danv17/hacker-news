@@ -25,7 +25,7 @@ export const StyledLinkContainer = styled.a`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 4.625rem;
+  min-height: 4.625rem;
   background-color: #fff;
   text-decoration: none;
   padding-left: 2rem;

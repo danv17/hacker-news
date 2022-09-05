@@ -3,7 +3,7 @@ export type HeaderProps = {
 };
 
 export type NewsContainerProps = {
-  news: NewProps[];
+  
 };
 
 export type ToggleProps = {

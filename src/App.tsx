@@ -1,13 +1,16 @@
-import './App.css';
 import { Content } from './component/Content';
 import { Header } from './component/Header';
+import { AppProvider } from './context/AppContext';
+import { StyledAppContainer } from './style/App';
 
 function App() {
   return (
-    <div className="App">
-      <Header title="hacker news" />
-      <Content />
-    </div>
+    <AppProvider>
+      <StyledAppContainer>
+        <Header title="hacker news" />
+        <Content />
+      </StyledAppContainer>
+    </AppProvider>
   );
 }
 

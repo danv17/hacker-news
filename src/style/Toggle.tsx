@@ -2,7 +2,8 @@ import styled, { css } from "styled-components";
 import { StyledToggleButtonProps } from "../types";
 
 export const StyledToggleGroup = styled.div`
-    padding: 3.375rem 0; 
+    padding: 3.375rem 0;
+    text-align: center;
 `
 
 const selectedToggleButton = css`

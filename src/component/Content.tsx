@@ -4,7 +4,6 @@ import { StyledContent } from "../style/Content";
 import {
   FrameworkNewsType,
   NewProps,
-  QueryType,
   StrictQueryType,
 } from "../types";
 import { getItem, getTimeAgo, saveItem } from "../utils";
@@ -14,18 +13,24 @@ import angularIcon from "../assets/angular.png";
 import reactIcon from "../assets/reactjs.png";
 import vueIcon from "../assets/vuejs.png";
 import { NewsContainer } from "./NewsContainer";
-import { StyledNEwsWrapper } from "../style/NewsContainer";
+import { StyledNewsWrapper } from "../style/NewsContainer";
+import { AppContext } from "../context/AppContext";
 
 export const Content = (props: React.PropsWithChildren<{}>) => {
-  const [news, setNews] = React.useState<NewProps[]>([]);
-  const [framework, setFramework] = React.useState<QueryType>("");
-  const [lastFramework, setLastFramework] = React.useState<QueryType>("");
-  const [loadMore, setLoadMore] = React.useState<boolean>(false);
+  const {
+    setNews,
+    framework,
+    setFramework,
+    lastFramework,
+    setLastFramework,
+    loadMore,
+    setLoadMore,
+  } = React.useContext(AppContext);
   const newsContainerRef = React.useRef<HTMLDivElement>(null);
 
   const loadNews = React.useCallback(
     (query: StrictQueryType, page: number, currentNews: NewProps[]) => {
-      getNews(query, page).then((response) => {
+      getNews(query, page).then((response: any) => {
         const { hits, page, nbPages } = response.data;
         const filteredNews = mapNews(hits, query);
         currentNews = [...currentNews, ...filteredNews];
@@ -37,7 +42,7 @@ export const Content = (props: React.PropsWithChildren<{}>) => {
         });
       });
     },
-    []
+    [setNews]
   );
 
   React.useEffect(() => {
@@ -60,7 +65,7 @@ export const Content = (props: React.PropsWithChildren<{}>) => {
         loadNews(framework, page, currentNews);
       }
     }
-  }, [framework, loadMore, loadNews]);
+  }, [framework, loadMore, loadNews, setLoadMore, setNews]);
 
   const handleSelect = (value: string) => {
     if (!lastFramework) {
@@ -78,7 +83,8 @@ export const Content = (props: React.PropsWithChildren<{}>) => {
     if (
       newsContainerRef.current &&
       newsContainerRef.current.clientHeight ===
-        newsContainerRef.current.scrollHeight && e.deltaY > 0
+        newsContainerRef.current.scrollHeight &&
+      e.deltaY > 0
     ) {
       setLoadMore(true);
     }
@@ -126,9 +132,13 @@ export const Content = (props: React.PropsWithChildren<{}>) => {
         ]}
         onSelect={handleSelect}
       />
-      <StyledNEwsWrapper ref={newsContainerRef} onScroll={handleScroll} onWheel={handleWheel}>
-        <NewsContainer news={news} />
-      </StyledNEwsWrapper>
+      <StyledNewsWrapper
+        ref={newsContainerRef}
+        onScroll={handleScroll}
+        onWheel={handleWheel}
+      >
+        <NewsContainer />
+      </StyledNewsWrapper>
     </StyledContent>
   );
 };
