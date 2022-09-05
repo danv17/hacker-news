@@ -66,11 +66,21 @@ export const Content = (props: React.PropsWithChildren<{}>) => {
     if (!lastFramework) {
       setLastFramework(value as StrictQueryType);
     }
-    
+
     if (framework !== value) {
-      newsContainerRef.current?.scrollTo({ top: 0})
-      setLastFramework(framework)
+      newsContainerRef.current?.scrollTo({ top: 0 });
+      setLastFramework(framework);
       setFramework(value as StrictQueryType);
+    }
+  };
+
+  const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    if (
+      newsContainerRef.current &&
+      newsContainerRef.current.clientHeight ===
+        newsContainerRef.current.scrollHeight && e.deltaY > 0
+    ) {
+      setLoadMore(true);
     }
   };
 
@@ -116,7 +126,7 @@ export const Content = (props: React.PropsWithChildren<{}>) => {
         ]}
         onSelect={handleSelect}
       />
-      <StyledNEwsWrapper ref={newsContainerRef} onScroll={handleScroll}>
+      <StyledNEwsWrapper ref={newsContainerRef} onScroll={handleScroll} onWheel={handleWheel}>
         <NewsContainer news={news} />
       </StyledNEwsWrapper>
     </StyledContent>
