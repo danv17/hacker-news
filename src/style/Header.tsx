@@ -10,7 +10,7 @@ export const StyledHeaderContainer = styled.div`
   background-image: linear-gradient(to bottom, #ececec -32%, #fff 124%);
   max-height: 10%;
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     padding: 0 ${contentHorizontalPaddingSmall}rem;
   }
 `;

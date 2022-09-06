@@ -15,6 +15,10 @@ export const StyledDropdownContainer = styled.div`
   & div {
     height: 100%;
   }
+
+  @media (max-width: 900px) {
+    min-width: 100%;
+  }
 `;
 
 export const StyledDropdownHeader = styled.div`
@@ -40,9 +44,13 @@ export const StyledDropdownItemList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
-  position: absolute;
-  width: 15rem;
+  position: relative;
+  min-width: 15rem;
   z-index: 9;
+
+  @media (max-width: 900px) {
+    min-width: 100%;
+  }
 `;
 
 const StyledDropdownItemSelected = css`
