@@ -30,7 +30,7 @@ export const New = (props: NewProps) => {
       <StyledLinkContainer href={story_url} target="_black">
         <div>
           <StyledTimeAgoByAuthor>
-            <TimeIcon />
+            <TimeIcon data-testid="time-icon-test-id"/>
             {`${timeAgo} ago by ${author}`}
           </StyledTimeAgoByAuthor>
           <StyledStoryTitle>{story_title}</StyledStoryTitle>
@@ -38,7 +38,7 @@ export const New = (props: NewProps) => {
       </StyledLinkContainer>
       <StyledFavorite>
         <div onClick={handleClick}>
-          {favourite ? <HeartFullIcon /> : <HeartIcon />}
+          {favourite ? <HeartFullIcon data-testid="heart-full-icon-test-id" /> : <HeartIcon />}
         </div>
       </StyledFavorite>
     </StyledNewContainer>

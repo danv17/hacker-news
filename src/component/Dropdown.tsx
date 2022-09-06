@@ -28,13 +28,13 @@ export const Dropdown = (props: React.PropsWithChildren<DropdownProps>) => {
   };
 
   return (
-    <StyledDropdownWrapper>
+    <StyledDropdownWrapper data-testid="dropdown-test-id">
       <StyledDropdownContainer>
-        <StyledDropdownHeader onClick={handleClick}>
+        <StyledDropdownHeader role="button" onClick={handleClick} data-testid="dropdown-header-test-id">
           {label}
-          <StyledChevron open={open} />
+          <StyledChevron open={open} data-testid={open ? "chevron-open-test-id" : "chevron-close-test-id"} />
         </StyledDropdownHeader>
-        <StyledDropdownItemList>
+        <StyledDropdownItemList data-testid="dropdown-item-list-test-id">
           {open &&
             options.map((option, i) => (
               <DropdownItem

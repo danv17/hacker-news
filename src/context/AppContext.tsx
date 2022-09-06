@@ -2,7 +2,7 @@ import React, { Dispatch } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { NewProps, QueryType } from "../types";
 
-type AppContextType = {
+export type AppContextType = {
   news: NewProps[];
   setNews: Dispatch<React.SetStateAction<NewProps[]>>;
   showFavs: boolean;

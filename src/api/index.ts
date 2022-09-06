@@ -1,9 +1,7 @@
 import axios from "axios";
 import { QueryType } from "../types";
 
-const newsUrl = "https://hn.algolia.com/api/v1/search_by_date?";
-
 export const getNews = (query: QueryType, page: number = 0) => {
-    return axios.get(`${newsUrl}query=${query}&page=${page}`);
+    return axios.get(`https://hn.algolia.com/api/v1/search_by_date?query=${query}&page=${page}`);
 
 }

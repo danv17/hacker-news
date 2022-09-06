@@ -6,7 +6,7 @@ import { StyledAppContainer } from './style/App';
 function App() {
   return (
     <AppProvider>
-      <StyledAppContainer>
+      <StyledAppContainer data-testid="app-test-id">
         <Header title="hacker news" />
         <Content />
       </StyledAppContainer>

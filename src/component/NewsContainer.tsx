@@ -80,7 +80,7 @@ export const NewsContainer = () => {
   }, [loadMore, loadNews, news, selectedFramework, setNews, showFavs]);
 
   return (
-    <StyledNewsContainer>
+    <StyledNewsContainer data-testid="news-container-test-id">
       {news
         .filter((hit) =>
           showFavs ? hit.favourite === true : hit.framework === selectedFramework
