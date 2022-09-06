@@ -1,8 +1,13 @@
 import styled from "styled-components";
+import { StyledNewsContainerWrapperType } from "../types";
 
-export const StyledNewsWrapper = styled.div`
+export const StyledNewsWrapper = styled.div<StyledNewsContainerWrapperType>`
   height: 50vh;
   overflow-y: auto;
+
+  @media (max-width: 900px) {
+    height: ${({ showFavs }) => showFavs ? 69 : 60}vh;
+  }
 `;
 
 export const StyledNewsContainer = styled.div`

@@ -5,6 +5,7 @@ import { StyledNewsContainer } from "../style/NewsContainer";
 import { CurrentPageType, NewProps, StrictQueryType } from "../types";
 import { getItem, getTimeAgo, saveItem } from "../utils";
 import { New } from "./New";
+import { v4 as uuidv4 } from 'uuid';
 
 export const NewsContainer = () => {
   const {
@@ -86,7 +87,7 @@ export const NewsContainer = () => {
           showFavs ? hit.favourite === true : hit.framework === selectedFramework
         )
         .map((hit) => (
-          <New key={`${hit.framework}${hit.objectID}${hit.author}`} {...hit} />
+          <New key={uuidv4()} {...hit} />
         ))}
     </StyledNewsContainer>
   );

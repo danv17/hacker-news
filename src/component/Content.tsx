@@ -81,7 +81,7 @@ export const Content = () => {
           onSelect={handleSelect}
         />
       )}
-      <StyledNewsWrapper data-testid="news-wrapper-test-id"
+      <StyledNewsWrapper showFavs={showFavs} data-testid="news-wrapper-test-id"
         ref={newsContainerRef}
         onScroll={handleScroll}
         onWheel={handleWheel}
