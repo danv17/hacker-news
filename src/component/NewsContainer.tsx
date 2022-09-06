@@ -48,46 +48,36 @@ export const NewsContainer = () => {
       const response = await getNews(query, page);
       const { hits, nbPages } = response.data;
       const filteredNews = mapNews(hits, query);
-      const storedNews = getItem<NewProps[]>("news") || [];
-      setNews([...storedNews, ...filteredNews]);
+      setNews([...news, ...filteredNews]);
       saveItem<CurrentPageType>(query, {
         page,
         maxPages: nbPages,
       });
       setIsLoading(false);
     },
-    [isLoading, loadMore, setIsLoading, setLoadMore, setNews]
+    [isLoading, loadMore, news, setIsLoading, setLoadMore, setNews]
   );
 
   React.useEffect(() => {
     if (selectedFramework) {
-      const storedNews = getItem<NewProps[]>("news") || [];
       const storedPage = getItem<CurrentPageType>(selectedFramework) || undefined;
       if (!storedPage) {
         loadNews(selectedFramework, 0);
         return;
       }
       let page = storedPage.page;
-      if (storedNews.filter((n) => n.framework === selectedFramework) && storedPage) {
+      if (news.filter((n) => n.framework === selectedFramework) && storedPage) {
         if (!showFavs && loadMore && page < storedPage.maxPages) {
           loadNews(selectedFramework, page + 1);
         }
         if (!news.length) {
-          setNews(storedNews);
+          setNews(news);
         }
       } else {
         loadNews(selectedFramework, page);
       }
     }
-  }, [
-    selectedFramework,
-    loadMore,
-    loadNews,
-    news.length,
-    setLoadMore,
-    setNews,
-    showFavs,
-  ]);
+  }, [loadMore, loadNews, news, selectedFramework, setNews, showFavs]);
 
   return (
     <StyledNewsContainer>

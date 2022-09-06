@@ -36,7 +36,10 @@ export const AppProvider = (props: React.PropsWithChildren<{}>) => {
   const { children } = props;
   const [news, setNews] = useLocalStorage<NewProps[]>("news", []);
   const [showFavs, setShowFavs] = React.useState<boolean>(false);
-  const [selectedFramework, setSelectedFramework] = React.useState<QueryType>("");
+  const [selectedFramework, setSelectedFramework] = useLocalStorage<QueryType>(
+    "selectedFramework",
+    ""
+  );
   const [lastFramework, setLastFramework] = React.useState<QueryType>("");
   const [loadMore, setLoadMore] = React.useState<boolean>(false);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
