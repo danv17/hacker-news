@@ -1,4 +1,5 @@
 import React from "react";
+import { AppContext } from "../context/AppContext";
 import {
   StyledDropdownContainer,
   StyledDropdownHeader,
@@ -17,6 +18,7 @@ import {
 export const Dropdown = (props: React.PropsWithChildren<DropdownProps>) => {
   const { options, value, label, onSelect } = props;
   const [open, setOpen] = React.useState<boolean>(false);
+  const { showFavs } = React.useContext(AppContext);
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     setOpen(!open);
@@ -28,7 +30,7 @@ export const Dropdown = (props: React.PropsWithChildren<DropdownProps>) => {
   };
 
   return (
-    <StyledDropdownWrapper data-testid="dropdown-test-id">
+    <StyledDropdownWrapper showFavs={showFavs} data-testid="dropdown-test-id">
       <StyledDropdownContainer>
         <StyledDropdownHeader role="button" onClick={handleClick} data-testid="dropdown-header-test-id">
           {label}

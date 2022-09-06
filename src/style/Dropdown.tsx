@@ -1,9 +1,14 @@
 import styled, { css } from "styled-components";
-import { StyledChevronProps } from "../types";
+import { StyledChevronProps, StyledDropdownWrapperType } from "../types";
 
-export const StyledDropdownWrapper = styled.div`
+const StyledDropdownWrapperHidden = css`
+  visibility: hidden;
+`
+
+export const StyledDropdownWrapper = styled.div<StyledDropdownWrapperType>`
   display: flex;
   justify-content: flex-start;
+  ${({ showFavs }) => showFavs && StyledDropdownWrapperHidden}
 `;
 
 export const StyledDropdownContainer = styled.div`

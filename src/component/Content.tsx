@@ -50,7 +50,8 @@ export const Content = () => {
     const element = e.target as HTMLDivElement;
     const bottom =
       Math.floor(element.scrollHeight - element.scrollTop) -
-      element.clientHeight <= 10;
+        element.clientHeight <=
+      10;
     if (!showFavs && bottom) {
       setLoadMore(bottom);
     }
@@ -69,19 +70,18 @@ export const Content = () => {
           { label: "My faves", onClick: () => handleToggle(true) },
         ]}
       />
-      {!showFavs && (
-        <Dropdown
-          label="Select your news"
-          value={selectedFramework}
-          options={[
-            { label: "Angular", value: "angular", icon: angularIcon },
-            { label: "Reactjs", value: "reactjs", icon: reactIcon },
-            { label: "Vuejs", value: "vuejs", icon: vueIcon },
-          ]}
-          onSelect={handleSelect}
-        />
-      )}
-      <StyledNewsWrapper showFavs={showFavs} data-testid="news-wrapper-test-id"
+      <Dropdown
+        label="Select your news"
+        value={selectedFramework}
+        options={[
+          { label: "Angular", value: "angular", icon: angularIcon },
+          { label: "Reactjs", value: "reactjs", icon: reactIcon },
+          { label: "Vuejs", value: "vuejs", icon: vueIcon },
+        ]}
+        onSelect={handleSelect}
+      />
+      <StyledNewsWrapper
+        data-testid="news-wrapper-test-id"
         ref={newsContainerRef}
         onScroll={handleScroll}
         onWheel={handleWheel}

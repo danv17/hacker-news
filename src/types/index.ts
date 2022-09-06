@@ -73,6 +73,6 @@ export type StyledChevronProps = {
   open: boolean;
 };
 
-export type StyledNewsContainerWrapperType = {
+export type StyledDropdownWrapperType = {
   showFavs: boolean;
 }
