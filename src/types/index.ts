@@ -2,10 +2,6 @@ export type HeaderProps = {
   title: string;
 };
 
-export type NewsContainerProps = {
-  
-};
-
 export type ToggleProps = {
   options: ToggleButtonProps[];
 };
