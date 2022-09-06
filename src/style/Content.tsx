@@ -5,6 +5,7 @@ import {
 } from "./CssVariables";
 
 export const StyledContent = styled.div`
+  font-family: Roboto;
   padding: 0 9.375rem;
 
   @media (max-width: 1200px) {
